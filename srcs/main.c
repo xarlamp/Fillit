@@ -1,5 +1,5 @@
 #include "fillit.h"
-#include "libft.h"
+#include "../libft/libft.h"
 #include <stdio.h>
 
 int		valid_or_not(int fd);
@@ -22,4 +22,3 @@ int		main(int ac, char **av)
 
 	return (0);
 }
-

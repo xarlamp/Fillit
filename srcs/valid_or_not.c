@@ -1,5 +1,7 @@
-#include "fillit.h"
+// #include "fillit.h"
 #include <stdio.h>
+#include "fillit.h"
+#include "../libft/libft.h"
 
 t_map		*initialize()
 {
