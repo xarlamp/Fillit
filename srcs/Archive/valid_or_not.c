@@ -5,25 +5,14 @@
 t_map		*initialize()
 {
 	t_map	*new;
-	int		i;
 
-	i = 0;
 	if (!(new = (t_map *)malloc(sizeof(t_map))))
 		return (NULL);
-	if (!(new->line = (char **)malloc(sizeof(char *) * 5)))
-		return (NULL);
-	while (i < 4)
+	if (!(new->line = (char *)malloc(sizeof(char) * BYTEREAD)))
 	{
-		if (!(new->line[i] = (char *)malloc(sizeof(char) * 5)))
-			return(NULL);
-		i++;
+		free(new);
+		return (NULL);
 	}
-	new->line[i] = 0;
-	// if (!(new->line = (char *)malloc(sizeof(char) * BYTEREAD)))
-	// {
-	// 	free(new);
-	// 	return (NULL);
-	// }
 	new->nbr_of_block = 1;
 	return (new);
 }

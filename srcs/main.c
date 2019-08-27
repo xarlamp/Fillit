@@ -2,8 +2,6 @@
 #include "../libft/libft.h"
 #include <stdio.h>
 
-int		valid_or_not(int fd);
-
 int		main(int ac, char **av)
 {
 	int	fd;
@@ -19,6 +17,5 @@ int		main(int ac, char **av)
 	}
 	else
 		ft_putstr("All right\n");
-
 	return (0);
 }
