@@ -11,13 +11,17 @@
 # define BLOCK '#'
 # define SPACE '.'
 
-int			valid_or_not(int fd);
 
-typedef struct	s_map
+
+typedef struct		s_map
 {
-	char		**line;
-	int			nbr_of_block;
+	char			**line;
+	int				nbr_of_block;
+	struct s_map	*next;
 
-}				t_map;
+}					t_map;
+
+int				valid_or_not(int fd, t_map **map_start);
+char 			*ft_charset(int size);
 
 #endif

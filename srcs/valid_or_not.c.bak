@@ -2,50 +2,30 @@
 #include "fillit.h"
 #include "../libft/libft.h"
 
-t_map	ft_transform(char *buf)
+t_map		*initialize()
 {
-	int i;
-	t_map elem;
-	char **tline;
+	t_map	*new;
+	int		i;
 
 	i = 0;
-	tline = (char **)malloc(sizeof(char *) * 5);
+	if (!(new = (t_map *)malloc(sizeof(t_map))))
+		return (NULL);
+	if (!(new->line = (char **)malloc(sizeof(char *) * 5)))
+		return (NULL);
 	while (i < 4)
 	{
-		tline[i] = (char *)malloc(sizeof(char) * 5);
-		tline[i][5] = 0;
+		if (!(new->line[i] = (char *)malloc(sizeof(char) * 5)))
+			return(NULL);
 		i++;
 	}
-	tline[5] = 0;
-	i = 1;
-	while (i < 21)
-	{
-		if (i % 5)
-			tline[i / 5][(i % 5) - 1] = buf[i - 1];
-		i++;
-	}
-	elem.line = tline;
-	return (elem);
-}
-
-
-void	ft_fill_block(t_map **map_start, char *buf)
-{
-	t_map cur_elem;
-	t_map *map_ptr;
-	int i;
-
-	i = 1;
-	cur_elem = ft_transform(buf);
-	map_ptr = *map_start;
-	if (map_ptr == 0)
-		map_ptr = &cur_elem;
-	else
-	{
-		while (map_ptr->next != 0)
-			map_ptr = map_ptr->next;
-		map_ptr->next = &cur_elem;
-	}
+	new->line[i] = 0;
+	// if (!(new->line = (char *)malloc(sizeof(char) * BYTEREAD)))
+	// {
+	// 	free(new);
+	// 	return (NULL);
+	// }
+	new->nbr_of_block = 1;
+	return (new);
 }
 
 int		check_block(char *str)
@@ -101,31 +81,26 @@ int		check_input(char *str, int ret)
 	return (0);
 }
 
-int		valid_or_not(int fd, t_map **map_start)
+int		valid_or_not(int fd)
 {
-	int ret;
-	int retprev;
-	char *buf;
+    int		ret;
+    int		retprev;
+    t_map	*buf;
 
 	if (fd == -1)
-	{
 		ft_putstr("Can't open file\n");
-		return (-1);
-	}
+	buf = initialize();
 	retprev = 0;
-	buf = ft_charset(22);
-	while ((ret = read(fd, buf, BYTEREAD)) >= 20)
+	while ((ret = read(fd, buf->line, BYTEREAD)) >= 20)
 	{
-		if (check_input(buf, ret) != 0)
-			return(-1);
-		printf("%s", buf);
-
-		ft_fill_block(map_start, buf);
-		//buf->nbr_of_block++;
+		if (check_input(buf->line, ret) != 0)
+			return (0);
+		printf("%s", buf->line);
+		buf->nbr_of_block++;
 		retprev = ret;
 	}
 	if (retprev != 20)
-		return (1);
+		return (0);
 	printf("success validation\n");
 	return (1);
 }
