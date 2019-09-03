@@ -2,10 +2,10 @@
 #include "fillit.h"
 #include "../libft/libft.h"
 
-t_map	ft_transform(char *buf)
+t_map	*ft_transform(char *buf)
 {
 	int i;
-	t_map elem;
+	t_map *elem;
 	char **tline;
 
 	i = 0;
@@ -24,27 +24,36 @@ t_map	ft_transform(char *buf)
 			tline[i / 5][(i % 5) - 1] = buf[i - 1];
 		i++;
 	}
-	elem.line = tline;
+	elem = (t_map *)malloc(sizeof(t_map));
+	elem->line = tline;
+	elem->next = 0;
 	return (elem);
 }
 
 
 void	ft_fill_block(t_map **map_start, char *buf)
 {
-	t_map cur_elem;
 	t_map *map_ptr;
-	int i;
+	t_map *map_prev_ptr;
+	int flag;
 
-	i = 1;
-	cur_elem = ft_transform(buf);
-	map_ptr = *map_start;
-	if (map_ptr == 0)
-		map_ptr = &cur_elem;
+	map_ptr = 0;
+	map_prev_ptr = 0;
+	flag = 0;
+	if (*map_start == 0)
+		*map_start = ft_transform(buf);
 	else
 	{
+		map_ptr = *map_start;
 		while (map_ptr->next != 0)
+		{
+			map_prev_ptr = map_ptr;
 			map_ptr = map_ptr->next;
-		map_ptr->next = &cur_elem;
+			flag = 1;
+		}
+		if (flag)
+			map_prev_ptr->next = map_ptr;
+		map_ptr->next = ft_transform(buf);
 	}
 }
 
@@ -68,8 +77,8 @@ int		check_block(char *str)
 		}
 		str++;
 	}
-	ft_putnbr(i);
-	ft_putchar('\n');
+	// ft_putnbr(i);
+	// ft_putchar('\n');
 	return (i == 6 || i == 8);
 }
 
@@ -126,6 +135,8 @@ int		valid_or_not(int fd, t_map **map_start)
 	}
 	if (retprev != 20)
 		return (1);
-	printf("success validation\n");
+	ft_putstr("DEBUG LINE\n\n");
+	ft_print_struct(*map_start);
+	ft_putstr("success validation\n");
 	return (1);
 }

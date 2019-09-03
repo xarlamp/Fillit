@@ -7,6 +7,7 @@ int		main(int ac, char **av)
 	int	fd;
 	t_map *map_start;
 
+	map_start = 0;
 	if (ac != 2)
 	{
 		write(1, "usage: ./fillit source_file\n", 28);
