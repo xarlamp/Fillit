@@ -31,6 +31,8 @@ void	ft_print_struct(t_map *map_start);
 int		ft_count_tetro(t_map *start);
 void 	ft_pre_solver(t_map *map_start);
 char **ft_create_map(t_map *map_start);
+void	ft_error(void);
+void	ft_free_map(char **map);
 
 
 #endif

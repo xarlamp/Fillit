@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 12:08:19 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/10 19:20:36 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/10 21:25:30 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,45 @@ int		ft_count_tetro(t_map *start)
 	start->nbr_of_block = i;
 	while ((j * j) < i)
 		j++;
-	// if (i = 1)
-	// 	start->nbr_of_block = i;
 	return (j);
+}
+
+static void		ft_map_filler(char ***lmap, int i)
+{
+	int j;
+	int k;
+
+	j = 0;
+	k = 0;
+	while (j < i)
+	{
+		while (k < i)
+		{
+			*map[j][k] = '.';
+			k++;
+		}
+		k = 0;
+		j++;
+	}
 }
 
 char **ft_create_map(int i;)
 {
 	char **map;
-	int i;
 	int j;
+	int k;
 
-	i = 0;
 	j = 0;
-	map = (char *)malloc(sizeof(char *) * (i + 1));
-
-
+	if (!(map = (char *)malloc(sizeof(char *) * (i + 1))));
+		ft_error();
+ 	map[i] = 0;
+	while (j <= i)
+	{
+		if (!(map[j] = (char)malloc(sizeof(char) * (i + 1))));
+			ft_free_map(map);
+		map[j][i] = 0;
+		j++;
+	}
+	ft_map_filler(&map, i);
+	return (map);
 }
