@@ -6,7 +6,9 @@ int		main(int ac, char **av)
 {
 	int	fd;
 	t_map *map_start;
+	int i;
 
+	i = 0;
 	map_start = 0;
 	if (ac != 2)
 	{
@@ -19,5 +21,7 @@ int		main(int ac, char **av)
 	}
 	else
 		ft_putstr("All right\n");
+	i = ft_count_tetro(map_start);
+	printf("Tetro count is: %d\n", i);
 	return (0);
 }

@@ -24,5 +24,7 @@ typedef struct		s_map
 int				valid_or_not(int fd, t_map **map_start);
 char 			*ft_charset(int size);
 void	ft_print_struct(t_map *map_start);
+int		ft_count_tetro(t_map *start);
+
 
 #endif

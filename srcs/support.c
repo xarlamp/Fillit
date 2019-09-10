@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 12:08:19 by edraco            #+#    #+#             */
-/*   Updated: 2019/08/30 12:11:48 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/07 20:00:39 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,20 @@ char *ft_charset(int size)
 	}
 	current_buf[i] = '\0';
 	return (current_buf);
+}
+
+int		ft_count_tetro(t_map *start)
+{
+	int i;
+
+	i = 0;
+	if (!(start))
+		return (0);
+	while (start->next != 0)
+	{
+		i++;
+		start = start->next;
+	}
+	i++;
+	return (i);
 }
