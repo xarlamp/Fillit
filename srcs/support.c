@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 12:08:19 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/10 18:38:06 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/10 19:20:36 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,15 @@ int		ft_count_tetro(t_map *start)
 	return (j);
 }
 
-char **ft_create_map(t_map *map_start)
+char **ft_create_map(int i;)
+{
+	char **map;
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	map = (char *)malloc(sizeof(char *) * (i + 1));
+
+
+}
