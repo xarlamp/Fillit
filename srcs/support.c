@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 12:08:19 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/10 21:25:30 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/11 19:02:58 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,47 +44,20 @@ int		ft_count_tetro(t_map *start)
 		start = start->next;
 	}
 	start->nbr_of_block = i;
-	while ((j * j) < i)
+	while ((j * j) < i * 4)
 		j++;
 	return (j);
 }
 
-static void		ft_map_filler(char ***lmap, int i)
+void 	ft_print_map(char **map)
 {
-	int j;
-	int k;
+	int i;
 
-	j = 0;
-	k = 0;
-	while (j < i)
+	i = 0;
+	while (map[i] != 0)
 	{
-		while (k < i)
-		{
-			*map[j][k] = '.';
-			k++;
-		}
-		k = 0;
-		j++;
+		ft_putstr(map[i]);
+		ft_putchar('\n');
+		i++;
 	}
-}
-
-char **ft_create_map(int i;)
-{
-	char **map;
-	int j;
-	int k;
-
-	j = 0;
-	if (!(map = (char *)malloc(sizeof(char *) * (i + 1))));
-		ft_error();
- 	map[i] = 0;
-	while (j <= i)
-	{
-		if (!(map[j] = (char)malloc(sizeof(char) * (i + 1))));
-			ft_free_map(map);
-		map[j][i] = 0;
-		j++;
-	}
-	ft_map_filler(&map, i);
-	return (map);
 }

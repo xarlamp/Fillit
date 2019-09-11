@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 17:48:28 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/10 17:59:30 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/11 19:03:22 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ int		main(int ac, char **av)
 	else
 		ft_putstr("All right\n");
 	ft_pre_solver(map_start);
-	printf("Tetro count is: %d\n", i);
 	return (0);
 }
