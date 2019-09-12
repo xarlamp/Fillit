@@ -35,5 +35,7 @@ char **ft_create_map(int i);
 void	ft_error(void);
 void	ft_free_map(char **map);
 void 	ft_print_map(char **map);
+int	ft_place_figure(char **figure, char **map);
+
 
 #endif

@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/10 17:48:28 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/12 15:51:15 by edraco           ###   ########.fr       */
+/*   Created: 2019/09/10 17:48:51 by edraco            #+#    #+#             */
+/*   Updated: 2019/09/12 17:32:09 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "../libft/libft.h"
 
-int		main(int ac, char **av)
+
+void 	ft_pre_solver(t_map *map_start)
 {
-	int	fd;
-	t_map *map_start;
+	char **map;
 
-	map_start = 0;
-	if (ac != 2)
+	map = ft_create_map(ft_count_tetro(map_start));
+	/*DEBUG*/ ft_print_map(map);
+	// ft_map_solver(map_start, map);
+
+	while (map_start)
 	{
-		write(1, "usage: ./fillit source_file\n", 28);
-		exit(EXIT_FAILURE);
+		ft_place_figure(map_start->line, map);
+		map_start = map_start->next;
 	}
-	if (valid_or_not(fd = open(av[1], O_RDONLY), &map_start) != 1)
-		ft_putstr("Error!\n");
-	else
-		ft_putstr("All right\n");
-	ft_pre_solver(map_start);
-	return (0);
+
 }
