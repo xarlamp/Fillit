@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 17:48:51 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/14 15:41:50 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/14 17:40:43 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,20 @@
 void 	ft_pre_solver(t_map *map_start)
 {
 	char **map;
+	t_map *cur_pointer;
 
 	map = ft_create_map(ft_count_tetro(map_start));
+	cur_pointer = map_start;
 	/*DEBUG*/ ft_print_map(map);
 	// ft_map_solver(map_start, map);
 
-	while (map_start)
+	while (cur_pointer)
 	{
-		ft_place_figure(map_start, map);
-		map_start = map_start->next;
+		if (ft_place_figure(map_start, map))
+		{
+			map = ft_create_map(ft_strlen(map[o]) + 1);
+			cur_pointer = map_start;
+		}
+		cur_pointer = cur_pointer->next;
 	}
-
 }

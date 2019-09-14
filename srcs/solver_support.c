@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 17:31:23 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/14 15:57:22 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/14 16:38:22 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@
 // 	return (0);
 // }
 
-static int	ft_place_figure_tryer_mapper(char **map, int i, int j, int x, int y)
+static int	ft_place_figure_tryer_mapper(t_map *map_start, char **map, int i,
+	 			int j, int x, int y)
 //This function is checking nearby places on accessability for placiong figure.
 {
 	int a;
@@ -68,7 +69,8 @@ static int	ft_place_figure_tryer_mapper(char **map, int i, int j, int x, int y)
 		{
 			//Check map for free space to place figure. But do not forget about
 			//size of map when you offsetting an pointer.
-			if (map[a + i][b + j] != '.')
+
+			if ((map_start->line[a][b] == '#') && (map[a + i][b + j] != '.'))
 				return (0);
 			b--;
 		}
@@ -90,9 +92,13 @@ static int	ft_place_figure_tryer_imprinter(t_map *map_start, char **map, int i,
 		b = y;
 		while (b)
 		{
-			map[a + i][b + j]
+			if (map_start->line[a][b] == '#')
+				map[a + i][b + j] = 64 + map_start->nbr_of_block;
+			b--;
 		}
+		a--;
 	}
+	return (1);
 }
 static int	ft_place_figure_tryer(t_map map_start, char **map, int i, int j)
 // This function is placing figure on map if it possible.
@@ -103,7 +109,9 @@ static int	ft_place_figure_tryer(t_map map_start, char **map, int i, int j)
 	x = ft_find_x;
 	y = ft_find_y;
 	if (ft_place_figure_tryer_mapper(map, i, j, 4 - x, 4 - y))
-		ft_place_figure_tryer_imprinter(map_start, map, i, j, 4 - x, 4 - y);
+		if (ft_place_figure_tryer_imprinter(map_start, map, i, j, 4 - x, 4 - y))
+			return (1)
+	return (0);
 }
 
 int	ft_place_figure(t_map map_start, char **map)
