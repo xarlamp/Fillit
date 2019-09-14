@@ -6,13 +6,13 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 21:20:24 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/11 19:02:58 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/14 19:53:43 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_free_map(char **map)
+void	ft_error_free_map(char **map)
 {
 	int i;
 	i = 0;
@@ -62,10 +62,13 @@ char **ft_create_map(int i)
 	while (j < i)
 	{
 		if (!(map[j] = (char *)malloc(sizeof(char) * (i + 1))))
-				ft_free_map(map);
+				ft_error_free_map(map);
 		map[j][i] = 0;
 		j++;
 	}
 	ft_map_filler(&map, i);
+	ft_putstr("Map has been created. Size is: ");
+	ft_putnbr(i);
+	ft_putchar('\n');
 	return (map);
 }
