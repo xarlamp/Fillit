@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 17:48:51 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/14 20:17:29 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/14 21:30:25 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,17 @@ void 	ft_pre_solver(t_map *map_start)
 	ft_print_struct(map_start);
 	while (cur_pointer)
 	{
-		if ((ft_place_figure(map_start, map)))
+		if (!(ft_place_figure(cur_pointer, map)))
 		{
+			// ft_putstr("Map rewrited\n");
 			len = ft_strlen(map[0]) + 1;
 			map = ft_free_map(map);
 			map = ft_create_map(len);
 			cur_pointer = map_start;
+			ft_putstr("___Map rewrited\n");
 		}
-		cur_pointer = cur_pointer->next;
+		else
+			cur_pointer = cur_pointer->next;
 	}
 	ft_putstr("Output:\n\n");
 	ft_print_map(map);

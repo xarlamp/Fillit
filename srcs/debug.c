@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 14:18:50 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/14 20:14:23 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/14 21:58:55 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,8 @@ void	ft_print_struct(t_map *map_start)
 	ft_putstr("Ribble-Ribble!\n\n");
 	ft_putchar('\n');
 }
+
+// void 	ft_print_figure(char **figure)
+// {
+//
+// }

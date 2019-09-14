@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 17:31:23 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/14 20:20:45 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/14 22:15:59 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,55 +51,67 @@ static int	ft_find_y(char **lfig)
 	}
 	return (0);
 }
-
 static int	ft_place_figure_tryer_mapper(t_map *map_start, char **map, int i,
 	 			int j, int x, int y)
-//This function is checking nearby places on accessability for placiong figure.
 {
 	int a;
 	int b;
+	int m;
+	int n;
+	int size;
 
 	a = x;
+	m = 0;
+	size = (int)ft_strlen(map[0]);
 	if ((x + i >= (int)ft_strlen(map[0])) || (y + j >= (int)ft_strlen(map[0])))
 		return(0);
-	while (a)
+	while (a < 4)
 	{
 		b = y;
-		while (b)
+		n = 0;
+		while (b < 4)
 		{
-			//Check map for free space to place figure. But do not forget about
-			//size of map when you offsetting an pointer.
-
-			if ((map_start->line[a][b] == '#') && (map[a + i][b + j] != '.'))
+			if (/*(i + m <= size) && (j + n <= size) &&*/ (map_start->line[a][b] == '#') && (map[i + m][j + n] != '.'))
 				return (0);
-			b--;
+			b++;
+			n++;
 		}
-		a--;
+		a++;
+		m++;
 	}
 	return (1);
 }
 
 static int	ft_place_figure_tryer_imprinter(t_map *map_start, char **map, int i,
 	 			int j, int x, int y)
-//This function is imprinting an figure on map
 {
 	int a;
 	int b;
+	int m;
+	int n;
 
 	a = x;
-	while (a)
+	m = 0;
+	while (a < 4)
 	{
 		b = y;
-		while (b)
+		n = 0;
+		while (b < 4)
 		{
 			if (map_start->line[a][b] == '#')
-				map[a + i][b + j] = 64 + map_start->nbr_of_block;
-			b--;
+				map[i + m][j + n] = 64 + map_start->nbr_of_block;
+			b++;
+			n++;
 		}
-		a--;
+		a++;
+		m++;
 	}
-	return (1);
+ft_putstr("This was block #");
+ft_putnbr(map_start->nbr_of_block);
+ft_putchar('\n');
+return (1);
 }
+
 static int	ft_place_figure_tryer(t_map *map_start, char **map, int i, int j)
 // This function is placing figure on map if it possible.
 {
@@ -108,8 +120,8 @@ static int	ft_place_figure_tryer(t_map *map_start, char **map, int i, int j)
 
 	x = ft_find_x(map_start->line);
 	y = ft_find_y(map_start->line);
-	if (ft_place_figure_tryer_mapper(map_start, map, i, j, 4 - x, 4 - y))
-		if (ft_place_figure_tryer_imprinter(map_start, map, i, j, 4 - x, 4 - y))
+	if (ft_place_figure_tryer_mapper(map_start, map, i, j, x, y))
+		if (ft_place_figure_tryer_imprinter(map_start, map, i, j, x, y))
 			return (1);
 	return (0);
 }
@@ -125,20 +137,30 @@ int	ft_place_figure(t_map *map_start, char **map)
 
 	i = 0;
 	size = ft_strlen(map[0]);
-	while (i < size) //Probably size + 1
+	ft_putstr("size is = ");
+	ft_putnbr(size);
+	ft_putchar('\n');
+	while (i < size)
 	{
 		j = 0;
-		while (j < size) //Probably size + 1
+		while (j < size)
 		{
 			if (ft_place_figure_tryer(map_start, map, i, j))
 			{
-				ft_putstr("Figure_tryer has returned 0\n");
-				return (0);
+				ft_putstr("i/j is ");
+				ft_putnbr(i);
+				ft_putchar(' ');
+				ft_putnbr(j);
+				ft_putchar('\n');
+				ft_putstr("Figure placed and Figure_tryer has returned 1\n");
+				ft_putstr("Map currently is:\n");
+				ft_print_map(map);
+				return (1);
 			}
 			j++;
 		}
 		i++;
 	}
-	ft_putstr("Figure_tryer has returned 1\n");
-	return (1);
+	ft_putstr("Figure_tryer has returned 0\n");
+	return (0);
 }
