@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 17:31:23 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/14 16:38:22 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/14 17:47:31 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int	ft_place_figure_tryer_mapper(t_map *map_start, char **map, int i,
 	int b;
 
 	a = x;
-	if ((x + i >= ft_strlen(map[0])) || (y + j >= ft_strlen(map[0]))
+	if ((x + i >= (int)ft_strlen(map[0])) || (y + j >= (int)ft_strlen(map[0])))
 		return(0);
 	while (a)
 	{
