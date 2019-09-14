@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 17:48:51 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/12 17:32:09 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/14 15:41:50 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void 	ft_pre_solver(t_map *map_start)
 
 	while (map_start)
 	{
-		ft_place_figure(map_start->line, map);
+		ft_place_figure(map_start, map);
 		map_start = map_start->next;
 	}
 
