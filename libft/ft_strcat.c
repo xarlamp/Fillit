@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btanja <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/08 21:26:44 by btanja            #+#    #+#             */
-/*   Updated: 2019/04/15 20:49:56 by btanja           ###   ########.fr       */
+/*   Created: 2019/04/13 11:30:05 by edraco            #+#    #+#             */
+/*   Updated: 2019/05/02 15:24:56 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strcat(char *s1, const char *s2)
 {
@@ -17,14 +19,13 @@ char	*ft_strcat(char *s1, const char *s2)
 
 	i = 0;
 	j = 0;
-	while (s1[i])
+	while (s1[i] != 0)
 		i++;
-	while (s2[j])
+	while (s2[j] != 0)
 	{
-		s1[i] = s2[j];
-		i++;
+		s1[i + j] = s2[j];
 		j++;
 	}
-	s1[i] = '\0';
+	s1[i + j] = 0;
 	return (s1);
 }

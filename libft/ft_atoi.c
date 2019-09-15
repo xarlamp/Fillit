@@ -3,37 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btanja <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/11 18:25:06 by btanja            #+#    #+#             */
-/*   Updated: 2019/04/11 19:07:31 by btanja           ###   ########.fr       */
+/*   Created: 2019/04/13 19:00:30 by edraco            #+#    #+#             */
+/*   Updated: 2019/04/28 17:27:39 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+static int	ft_atoi_exceptions(int sign)
 {
-	int neg;
-	int res;
+	if (sign == 1)
+		return (-1);
+	return (0);
+}
 
-	neg = 1;
-	res = 0;
-	while (*str == ' ' || ((*str > 8) && (*str < 14)))
+int			ft_atoi(const char *str)
+{
+	int				result;
+	int				sign;
+	long int		sum;
+
+	sign = 1;
+	while (*str == ' ' || *str == '\t' || *str == '\v' ||
+			*str == '\n' || *str == '\r' || *str == '\f')
 		str++;
-	if (*str == '-')
+	sum = 0;
+	if ((*str == '-') || (*str == '+'))
 	{
-		neg = -1;
-		str++;
-	}
-	else if (*str == '+')
-	{
+		if (*str == '-')
+			sign = -1;
 		str++;
 	}
 	while (*str >= '0' && *str <= '9')
 	{
-		res = res * 10 + (*str - '0');
+		sum = sum * 10 + (*str - '0');
+		if ((sum * 10) / 10 != sum)
+			return (ft_atoi_exceptions(sign));
 		str++;
 	}
-	return (neg * res);
+	result = sign * sum;
+	return (result);
 }

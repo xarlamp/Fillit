@@ -6,12 +6,11 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 12:39:27 by edraco            #+#    #+#             */
-/*   Updated: 2019/08/01 17:16:20 by edraco           ###   ########.fr       */
+/*   Updated: 2019/04/28 12:39:54 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libft.h"
-#include <stdlib.h>
+#include "libft.h"
 
 static size_t	count_words(char const *s, char c)
 {

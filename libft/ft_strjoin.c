@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btanja <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/15 18:47:02 by btanja            #+#    #+#             */
-/*   Updated: 2019/04/15 20:49:53 by btanja           ###   ########.fr       */
+/*   Created: 2019/04/28 12:39:00 by edraco            #+#    #+#             */
+/*   Updated: 2019/04/28 13:33:31 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,28 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*fresh;
+	int		len1;
+	int		len2;
 	int		i;
+	char	*str;
 
+	if ((s1 == 0) || (s2 == 0))
+		return (0);
 	i = 0;
-	fresh = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
-	while (*(s1 + i))
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	str = (char *)ft_memalloc(sizeof(char) * (len1 + len2 + 1));
+	if (str == 0)
+		return (0);
+	while (i < len1)
 	{
-		*(fresh + i) = *(s1 + i);
+		str[i] = s1[i];
 		i++;
 	}
-	return (ft_strcat(fresh, s2));
+	while (i < len1 + len2)
+	{
+		str[i] = s2[i - len1];
+		i++;
+	}
+	return (str);
 }

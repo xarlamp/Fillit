@@ -1,49 +1,70 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/28 12:37:15 by edraco            #+#    #+#             */
+/*   Updated: 2019/04/28 12:39:54 by edraco           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static unsigned int	ft_unsign(int n)
+static int	memo(int n)
 {
-	unsigned int	num;
+	size_t	i;
 
+	i = 2;
 	if (n < 0)
-		num = n * (-1);
-	else
-		num = n;
-	return (num);
+		++i;
+	while (n / 10 != 0)
+	{
+		++i;
+		n /= 10;
+	}
+	return (i);
 }
 
-static size_t	ft_reslen(int n)
+static char	*add_digits(char *new, int i, unsigned int bn, int n)
 {
-	unsigned int	num;
-	size_t		i;
+	int	flag;
 
-	num = ft_unsign(n);
-	i = 0;
-	while (num > 0)
+	flag = 1;
+	while ((n / 10) != 0)
 	{
-		i++;
-		num /= 10;
+		flag = flag * 10;
+		n /= 10;
 	}
-	if (n <= 0)
-		return (i + 1);
-	else
-		return (i);
+	while (flag >= 1)
+	{
+		new[i++] = (bn / flag + '0');
+		bn = bn - (bn / flag) * flag;
+		flag = flag / 10;
+	}
+	new[i] = '\0';
+	return (new);
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
-	char		*res;
-	size_t		reslen;
-	unsigned int	num;
+	char			*new;
+	size_t			i;
+	unsigned int	bn;
 
-	reslen = ft_reslen(n);
-	res = (char*)ft_memalloc(reslen);
-	num = ft_unsign(n);
-	while (reslen--)
+	new = (char *)(malloc(sizeof(char) * memo(n)));
+	if (new)
 	{
-		res[reslen] = (num % 10) + '0';
-		num /= 10;
+		i = 0;
+		bn = n;
+		if (n < 0)
+		{
+			bn = -n;
+			new[i++] = '-';
+		}
+		new = add_digits(new, i, bn, n);
+		return (new);
 	}
-	if (n < 0)
-		res[0] = '-';
-	return (res);
+	return (0);
 }
