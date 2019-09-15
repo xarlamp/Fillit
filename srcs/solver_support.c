@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 17:31:23 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/15 17:08:35 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/15 18:24:26 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static int	ft_find_x(char **lfig)
 	int j;
 
 	i = 0;
-	while (i < 5)
+	while (i < 4)
 	{
 		j = 0;
-		while (j < 5)
+		while (j < 4)
 		{
 			if (lfig[i][j] == '#')
 				return(i);
@@ -38,13 +38,18 @@ static int	ft_find_y(char **lfig)
 	int j;
 
 	j = 0;
-	while (j < 5)
+	while (j < 4)
 	{
 		i = 0;
-		while (i < 5)
+		while (i < 4)
 		{
+			// ft_putstr("i = ");
+			// ft_putnbrendl(i);
+			// ft_putstr("j = ");
+			// ft_putnbrendl(j);
 			if (lfig[i][j] == '#')
 				return(j);
+			// ft_putstr("Debug 2.1\n");
 			i++;
 		}
 		j++;
@@ -60,19 +65,41 @@ static int	ft_place_figure_tryer_mapper(t_map *map_start, char **map, int i,
 	int n;
 	int size;
 
+	ft_putstr("Debug4\n");
 	a = x;
 	m = 0;
 	size = (int)ft_strlen(map[0]);
 	if ((x + i >= (int)ft_strlen(map[0])) || (y + j >= (int)ft_strlen(map[0])))
 		return(0);
-	while (a < 4)
+	ft_putstr("Debug4.1\n");
+	while (a < 4 - x)
 	{
 		b = y;
 		n = 0;
-		while (b < 4)
+		while (b < 4 - y)
 		{
-			if (/*(i + m <= size) && (j + n <= size) &&*/ (map_start->line[a][b] == '#') && (map[i + m][j + n] != '.'))
+			ft_putstr("_____GRAND DEBUG_____\n");
+			ft_putstr("size = ");
+			ft_putnbrendl(size);
+			ft_putstr("i = ");
+			ft_putnbrendl(i);
+			ft_putstr("j = ");
+			ft_putnbrendl(j);
+			ft_putstr("m = ");
+			ft_putnbrendl(m);
+			ft_putstr("n = ");
+			ft_putnbrendl(n);
+			ft_putstr("a = ");
+			ft_putnbrendl(a);
+			ft_putstr("b = ");
+			ft_putnbrendl(b);
+			ft_putstr("i + m = ");
+			ft_putnbrendl(i + m);
+			ft_putstr("j + n = ");
+			ft_putnbrendl(j + n);
+			if ((i + m >= size) || (j + n >= size) || ((map_start->line[a][b] == '#') && (map[i + m][j + n] != '.')))
 				return (0);
+			// ft_putstr("Debug4.3\n");
 			b++;
 			n++;
 		}
@@ -89,9 +116,12 @@ static int	ft_place_figure_tryer_imprinter(t_map *map_start, char **map, int i,
 	int b;
 	int m;
 	int n;
+	// int size;
 
+	ft_putstr("Debug5\n");
 	a = x;
 	m = 0;
+	// size = ft_strlen(map[0]);
 	while (a < 4)
 	{
 		b = y;

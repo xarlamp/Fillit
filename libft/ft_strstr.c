@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 17:11:39 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/11 21:09:53 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/15 17:21:53 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ char	*ft_strstr(const char *haystack, const char *needle)
 	while (*++s)
 		if (ft_strncmp(s, needle, i) == 0)
 			return ((char*)s);
-	return (NULL);
+	return (NULL);//olol
 }

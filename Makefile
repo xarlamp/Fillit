@@ -13,7 +13,8 @@ LIBFT = libft/libft.a
 
 all: $(LNAME) $(OBJ) $(NAME)
 $(LNAME):
-	@make re -C libft
+	make re -C libft
+	make clean -C libft 
 $(OBJ): %.o : %.c
 	@gcc $(FLAGS) -c $< -o $@
 $(NAME):
