@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 17:48:51 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/14 21:30:25 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/15 14:29:00 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void 	ft_pre_solver(t_map *map_start)
 	len = 0;
 	map = ft_create_map(ft_count_tetro(map_start));
 	cur_pointer = map_start;
-	/*DEBUG*/ ft_print_map(map);
+	// /*DEBUG*/ ft_print_map(map);
 	// ft_map_solver(map_start, map);
-	ft_print_struct(map_start);
+	// ft_print_struct(map_start);
 	while (cur_pointer)
 	{
 		if (!(ft_place_figure(cur_pointer, map)))
@@ -47,11 +47,11 @@ void 	ft_pre_solver(t_map *map_start)
 			map = ft_free_map(map);
 			map = ft_create_map(len);
 			cur_pointer = map_start;
-			ft_putstr("___Map rewrited\n");
+			// ft_putstr("___Map rewrited\n");
 		}
 		else
 			cur_pointer = cur_pointer->next;
 	}
-	ft_putstr("Output:\n\n");
+	// ft_putstr("Output:\n\n");
 	ft_print_map(map);
 }

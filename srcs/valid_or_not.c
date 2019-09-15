@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 17:50:22 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/10 17:50:23 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/15 15:07:21 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,16 +138,16 @@ int		valid_or_not(int fd, t_map **map_start)
 	{
 		if (check_input(buf, ret) != 0)
 			return(-1);
-		printf("%s", buf);
+		// printf("%s", buf);
 
 		ft_fill_block(map_start, buf);
 		//buf->nbr_of_block++;
 		retprev = ret;
 	}
 	if (retprev != 20)
-		return (1);
-	ft_putstr("DEBUG LINE\n\n");
-	ft_print_struct(*map_start);
-	ft_putstr("success validation\n");
+		return (-1);
+	// ft_putstr("DEBUG LINE\n\n");
+	// ft_print_struct(*map_start);
+	// ft_putstr("success validation\n");
 	return (1);
 }

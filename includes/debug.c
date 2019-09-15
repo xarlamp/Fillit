@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 14:18:50 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/14 21:58:55 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/15 14:28:02 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	ft_print_struct(t_map *map_start)
 			ft_putchar('\n');
 			i++;
 		}
-		ft_putstr("This is tetro number: ");
-		ft_putnbr(map_start->nbr_of_block);
-		ft_putstr("\nRibble!\n\n");
-		ft_putchar('\n');
+		// ft_putstr("This is tetro number: ");
+		// ft_putnbr(map_start->nbr_of_block);
+		// ft_putstr("\nRibble!\n\n");
+		// ft_putchar('\n');
 		i = 0;
 		map_start = map_start->next;
 	}
@@ -41,8 +41,8 @@ void	ft_print_struct(t_map *map_start)
 	// 	i++;
 	// }
 
-	ft_putstr("Ribble-Ribble!\n\n");
-	ft_putchar('\n');
+	// ft_putstr("Ribble-Ribble!\n\n");
+	// ft_putchar('\n');
 }
 
 // void 	ft_print_figure(char **figure)

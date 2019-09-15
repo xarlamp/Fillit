@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 17:48:28 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/12 15:51:15 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/15 15:07:42 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int		main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 	if (valid_or_not(fd = open(av[1], O_RDONLY), &map_start) != 1)
-		ft_putstr("Error!\n");
-	else
-		ft_putstr("All right\n");
-	ft_pre_solver(map_start);
+		ft_putstr("error\n");
+	 else
+	// 	ft_putstr("All right\n");
+		ft_pre_solver(map_start);
 	return (0);
 }

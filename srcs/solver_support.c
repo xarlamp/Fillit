@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 17:31:23 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/14 22:15:59 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/15 14:29:00 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,9 @@ static int	ft_place_figure_tryer_imprinter(t_map *map_start, char **map, int i,
 		a++;
 		m++;
 	}
-ft_putstr("This was block #");
-ft_putnbr(map_start->nbr_of_block);
-ft_putchar('\n');
+// ft_putstr("This was block #");
+// ft_putnbr(map_start->nbr_of_block);
+// ft_putchar('\n');
 return (1);
 }
 
@@ -137,9 +137,9 @@ int	ft_place_figure(t_map *map_start, char **map)
 
 	i = 0;
 	size = ft_strlen(map[0]);
-	ft_putstr("size is = ");
-	ft_putnbr(size);
-	ft_putchar('\n');
+	// ft_putstr("size is = ");
+	// ft_putnbr(size);
+	// ft_putchar('\n');
 	while (i < size)
 	{
 		j = 0;
@@ -147,20 +147,20 @@ int	ft_place_figure(t_map *map_start, char **map)
 		{
 			if (ft_place_figure_tryer(map_start, map, i, j))
 			{
-				ft_putstr("i/j is ");
-				ft_putnbr(i);
-				ft_putchar(' ');
-				ft_putnbr(j);
-				ft_putchar('\n');
-				ft_putstr("Figure placed and Figure_tryer has returned 1\n");
-				ft_putstr("Map currently is:\n");
-				ft_print_map(map);
+				// ft_putstr("i/j is ");
+				// ft_putnbr(i);
+				// ft_putchar(' ');
+				// ft_putnbr(j);
+				// ft_putchar('\n');
+				// ft_putstr("Figure placed and Figure_tryer has returned 1\n");
+				// ft_putstr("Map currently is:\n");
+				// ft_print_map(map);
 				return (1);
 			}
 			j++;
 		}
 		i++;
 	}
-	ft_putstr("Figure_tryer has returned 0\n");
+	// ft_putstr("Figure_tryer has returned 0\n");
 	return (0);
 }

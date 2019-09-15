@@ -4,7 +4,7 @@ INCLUDES = ./includes
 FLAGS = -Wall -Werror -Wextra -I$(INCLUDES)
 RM = /bin/rm -rf
 SDIR = ./srcs
-SRCS = $(SDIR)/main.c $(SDIR)/valid_or_not.c $(SDIR)/support.c $(SDIR)/debug.c \
+SRCS = $(SDIR)/main.c $(SDIR)/valid_or_not.c $(SDIR)/support.c  \
 $(SDIR)/support2.c $(SDIR)/support3.c $(SDIR)/solver.c $(SDIR)/solver_support.c\
 
 OBJ = $(SRCS:.c=.o)
@@ -23,3 +23,6 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 re: fclean all
+
+
+## $(SDIR)/debug.c

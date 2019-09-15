@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 21:20:24 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/14 19:53:43 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/15 14:37:52 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_error_free_map(char **map)
 
 void	ft_error(void)
 {
-	ft_putstr("Error!\n");
+	ft_putstr("error\n");
 	exit (0);
 }
 
@@ -67,8 +67,8 @@ char **ft_create_map(int i)
 		j++;
 	}
 	ft_map_filler(&map, i);
-	ft_putstr("Map has been created. Size is: ");
-	ft_putnbr(i);
-	ft_putchar('\n');
+	// ft_putstr("Map has been created. Size is: ");
+	// ft_putnbr(i);
+	// ft_putchar('\n');
 	return (map);
 }
