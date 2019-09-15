@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sider.c                                            :+:      :+:    :+:   */
+/*   finder.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 19:30:45 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/15 19:37:12 by edraco           ###   ########.fr       */
+/*   Created: 2019/09/15 21:37:42 by edraco            #+#    #+#             */
+/*   Updated: 2019/09/15 22:18:19 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-static int	ft_find_x(char **lfig)
+int	ft_find_x(char **lfig)
 {
 	int i;
 	int j;
@@ -32,7 +32,7 @@ static int	ft_find_x(char **lfig)
 	return (0);
 }
 
-static int	ft_find_y(char **lfig)
+int	ft_find_y(char **lfig)
 {
 	int i;
 	int j;
@@ -43,13 +43,8 @@ static int	ft_find_y(char **lfig)
 		i = 0;
 		while (i < 4)
 		{
-			// ft_putstr("i = ");
-			// ft_putnbrendl(i);
-			// ft_putstr("j = ");
-			// ft_putnbrendl(j);
 			if (lfig[i][j] == '#')
 				return(j);
-			// ft_putstr("Debug 2.1\n");
 			i++;
 		}
 		j++;
@@ -57,37 +52,42 @@ static int	ft_find_y(char **lfig)
 	return (0);
 }
 
-static char **ft_sider_worker(char **line)
+int	ft_find_x_end(char **lfig)
 {
-	int x;
-	int y;
+	int i;
+	int j;
 
-	x = ft_find_x(line);
-	y = ft_find_y(line);
-
+	i = 4;
+	while (i > 0)
+	{
+		j = 4;
+		while (j > 0)
+		{
+			if (lfig[i - 1][j - 1] == '#')
+				return(i - 1);
+			j--;
+		}
+		i--;
+	}
+	return (0);
 }
 
-static void ft_free_figure(char **line)
+int	ft_find_y_end(char **lfig)
 {
-	char **ptr;
+	int i;
+	int j;
 
-	ptr = line;
-	while (ptr)
+	j = 4;
+	while (j > 0)
 	{
-		free(*ptr);
-		ptr++;
+		i = 4;
+		while (i > 0)
+		{
+			if (lfig[i - 1][j - 1] == '#')
+				return(j - 1);
+			i--;
+		}
+		j--;
 	}
-	free(ptr);
-}
-
-void	ft_sider(t_map *map_start)
-{
-	char **ptr;
-	while (map_start)
-	{
-		ptr = map_start->line;
-		map_start->line = ft_sider_worker(map_start->line);
-		ft_free_figure(ptr);
-		map_start = map_start->next;
-	}
+	return (0);
 }

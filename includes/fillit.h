@@ -36,6 +36,9 @@ void	ft_error(void);
 void	ft_error_free_map(char **map);
 void 	ft_print_map(char **map);
 int	ft_place_figure(t_map *map_start, char **map);
-
+int	ft_find_x(char **lfig);
+int	ft_find_y(char **lfig);
+int	ft_find_x_end(char **lfig);
+int	ft_find_y_end(char **lfig);
 
 #endif

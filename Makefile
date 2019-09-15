@@ -6,7 +6,7 @@ RM = /bin/rm -rf
 SDIR = ./srcs
 SRCS = $(SDIR)/main.c $(SDIR)/valid_or_not.c $(SDIR)/support.c $(SDIR)/debug.c \
 $(SDIR)/support2.c $(SDIR)/support3.c $(SDIR)/solver.c $(SDIR)/solver_support.c\
-
+$(SDIR)/finder.c
 OBJ = $(SRCS:.c=.o)
 LIBFT = libft/libft.a
 
@@ -14,7 +14,7 @@ LIBFT = libft/libft.a
 all: $(LNAME) $(OBJ) $(NAME)
 $(LNAME):
 	make re -C libft
-	make clean -C libft 
+	make clean -C libft
 $(OBJ): %.o : %.c
 	@gcc $(FLAGS) -c $< -o $@
 $(NAME):
