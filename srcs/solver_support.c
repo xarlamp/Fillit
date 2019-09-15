@@ -6,56 +6,13 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 17:31:23 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/15 18:24:26 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/15 19:37:14 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int	ft_find_x(char **lfig)
-{
-	int i;
-	int j;
 
-	i = 0;
-	while (i < 4)
-	{
-		j = 0;
-		while (j < 4)
-		{
-			if (lfig[i][j] == '#')
-				return(i);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
-static int	ft_find_y(char **lfig)
-{
-	int i;
-	int j;
-
-	j = 0;
-	while (j < 4)
-	{
-		i = 0;
-		while (i < 4)
-		{
-			// ft_putstr("i = ");
-			// ft_putnbrendl(i);
-			// ft_putstr("j = ");
-			// ft_putnbrendl(j);
-			if (lfig[i][j] == '#')
-				return(j);
-			// ft_putstr("Debug 2.1\n");
-			i++;
-		}
-		j++;
-	}
-	return (0);
-}
 static int	ft_place_figure_tryer_mapper(t_map *map_start, char **map, int i,
 	 			int j, int x, int y)
 {
