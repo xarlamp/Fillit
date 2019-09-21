@@ -6,7 +6,7 @@
 /*   By: edraco <edraco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 17:31:23 by edraco            #+#    #+#             */
-/*   Updated: 2019/09/15 22:21:34 by edraco           ###   ########.fr       */
+/*   Updated: 2019/09/21 16:04:21 by edraco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static int	ft_place_figure_tryer_mapper(t_map *map_start, char **map, int i,
 // }
 
 static int	ft_place_figure_tryer_mapper(t_map *map_start, char **map, int i,
-	 			int j)
+	 			int j, int size)
 {
 	int x_end;
 	int y_end;
@@ -114,7 +114,7 @@ static int	ft_place_figure_tryer_mapper(t_map *map_start, char **map, int i,
 	// ft_putnbrendl(x_end);
 	// ft_putstr("y_end = ");
 	// ft_putnbrendl(y_end);
-	if ((x_end + i >= (int)ft_strlen(map[0])) || (y_end + j >= (int)ft_strlen(map[0])))
+	if ((x_end + i >= size) || (y_end + j >= size))
 		return(0);
 	while(x <= x_end)
 	{
@@ -169,13 +169,14 @@ static int	ft_place_figure_tryer_imprinter(t_map *map_start, char **map, int i,
 	return (1);
 }
 
-static int	ft_place_figure_tryer(t_map *map_start, char **map, int i, int j)
+static int	ft_place_figure_tryer(t_map *map_start, char **map, int i, int j,
+				int size)
 // This function is placing figure on map if it possible.
 {
 	// ft_putstr("Debug1\n");
 	// // ft_putstr("Debug2\n");
 	// ft_putstr("Debug3\n");
-	if (ft_place_figure_tryer_mapper(map_start, map, i, j))
+	if (ft_place_figure_tryer_mapper(map_start, map, i, j, size))
 		if (ft_place_figure_tryer_imprinter(map_start, map, i, j))
 			return (1);
 	return (0);
@@ -189,32 +190,40 @@ int	ft_place_figure(t_map *map_start, char **map)
 	int i;
 	int j;
 	int size;
+	int fence;
 
 	i = 0;
+	fence = 2;
 	size = ft_strlen(map[0]);
 	// ft_putstr("size is = ");
 	// ft_putnbr(size);
 	// ft_putchar('\n');
-	while (i < size)
+	while (fence <= size)
 	{
-		j = 0;
-		while (j < size)
+		while (i < fence)
 		{
-			if (ft_place_figure_tryer(map_start, map, i, j))
+			j = 0;
+			while (j < fence)
 			{
-				// ft_putstr("i/j is ");
-				// ft_putnbr(i);
-				// ft_putchar(' ');
-				// ft_putnbr(j);
-				// ft_putchar('\n');
-				// ft_putstr("Figure placed and Figure_tryer has returned 1\n");
-				// ft_putstr("Map currently is:\n");
-				// ft_print_map(map);
-				return (1);
+				if (ft_place_figure_tryer(map_start, map, i, j, fence))
+				{
+					// ft_putstr("i/j is ");
+					// ft_putnbr(i);
+					// ft_putchar(' ');
+					// ft_putnbr(j);
+					// ft_putchar('\n');
+					// ft_putstr("Figure placed and Figure_tryer has returned 1\n");
+					// ft_putstr("Map currently is:\n");
+					// ft_print_map(map);
+					return (1);
+				}
+				j++;
 			}
-			j++;
+			i++;
 		}
-		i++;
+		fence++;
+		i = 0;
+		j = 0;
 	}
 	// ft_putstr("Figure_tryer has returned 0\n");
 	return (0);
